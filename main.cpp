@@ -1,38 +1,27 @@
-// Booleans
+// Characters and Text
 
 #include <iostream>
 
 int main() {
-
-  bool red_light {false};
-  bool green_light {true};
   
-  if(red_light == true) {
-      std::cout << "Stop!" << std::endl;
-  } else {
-      std::cout << "Go through!" << std::endl;
-  }
+	char character1 {'a'};
+  char character2 {'r'};
+  char character3 {'r'};
+  char character4 {'o'};
+  char character5 {'w'};
+  
+  std::cout << character1 << std::endl;
+  std::cout << character2 << std::endl;
+  std::cout << character3 << std::endl;
+  std::cout << character4 << std::endl;
+  std::cout << character5 << std::endl;
 
-  if(green_light) {
-      std::cout << "The light is green!" << std::endl;
-  } else {
-      std::cout << "The light is NOT green!" << std::endl;
-  }
-
-  //sizeof()
-  std::cout << "sizeof(bool) : " << sizeof(bool) << std::endl;
-
-
-  //Printing out a bool
-  //1 -->> true
-  //0 -->> false
+  //One byte in memory : 2^8 = 256 different values (0 ~ 255)
   std::cout << std::endl;
-  std::cout << "red_light : " << red_light << std::endl;
-  std::cout << "green_light : " << green_light << std::endl;
-
-  std::cout << std::boolalpha;
-  std::cout << "red_light : " << red_light << std::endl;
-  std::cout << "green_light : " << green_light << std::endl;
+  
+  char value = 65 ; // ASCII character code for 'A'
+  std::cout << "value : " << value << std::endl; // A
+  std::cout << "value(int) : " << static_cast<int>(value) << std::endl; 
 
   return 0;
 }
