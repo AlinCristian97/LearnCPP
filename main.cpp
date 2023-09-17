@@ -1,25 +1,41 @@
-// Statements and Functions
+// Input Output IO
 
 #include <iostream>
-
-int addNumbers(int firstParam, int secondParam) {
-  int result = firstParam + secondParam;
-  return result;
-}
+#include <string>
 
 int main() {
+  // Printing Data
+  // std::cout << "Hello C++20 " << std::endl;
 
-  int firstNumber {3}; // Statement
-  int secondNumber = 7;
+  // int age {21};
+  // std::cout << "Age: " << age << std::endl;
+  
+  // std::cerr << "Error!" << std::endl;
+  // std::clog << "Info Log!" << std::endl;
 
-  std::cout << "First number: " << firstNumber << std::endl;
-  std::cout << "Second number: " << secondNumber << std::endl;
+  //Input Data
+  int age1;
+  std::string name;
 
-  int sum = firstNumber + secondNumber;
-  std::cout << "Direct Sum: " << sum << std::endl;
+  // std::cout << "Please type your name and age: " << std::endl;
 
-  sum = addNumbers(25, 5);
-  std::cout << "Function Sum: " << sum << std::endl;
+  // // std::cin >> name;
+  // // std::cin >> age1;
+  // std::cin >> name >> age1;
+
+  // std::cout << "Hello " << name << " you are " << age1 << " years old!" << std::endl;
+
+  // Data with spaces
+
+  std::string fullName;
+  int age2;
+
+  std::cout << "Please type in your full name and age " << std::endl;
+
+  std::getline(std::cin, fullName);
+  std::cin >> age2;
+
+    std::cout << "Hello " << fullName << " you are " << age2 << " years old!" << std::endl;
 
   return 0;
 }
