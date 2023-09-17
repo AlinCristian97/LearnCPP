@@ -1,4 +1,4 @@
-// Core Language Feature VS Standard Library VS STL
+// Variables and Data Types
 
 #include <iostream>
 
