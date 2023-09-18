@@ -1,33 +1,33 @@
-// Compound Operators
+// Relational Operators (Compare)
 
 #include <iostream>
 
 int main() {
 
-  int value {45};
-  
-  std::cout << "The value is : " << value << std::endl;
-  
-  std::cout << std::endl;
-  value = value + 5;
-  //value +=5; // equivalent to value = value + 5
-  std::cout << "The value is (after +=5) : " << value << std::endl; // 50
+  int number1 {20};
+  int number2 {20};
+	
+  std::cout << "number1 : " << number1 << std::endl;
+  std::cout << "number2 : " << number2 << std::endl;
+	
+	std::cout << std::endl;
+	std::cout << "Comparing variables" << std::endl;
+	
+  std::cout << std::boolalpha ; // Make bool show up as true/false instead of 1/0
+	//Stress the need for parentheses here
+  std::cout << "number1 < number2 : " << (number1 < number2) << std::endl;
+	std::cout << "number1 <= number2 : " << (number1 <= number2) << std::endl;
+  std::cout << "number1 > number2 : " << (number1 > number2) << std::endl;
+  std::cout << "number1 >= number2 : " << (number1 >= number2) << std::endl;
+  std::cout << "number1 == number2 : " << (number1 == number2) << std::endl;
+  std::cout << "number1 != number2 : " << (number1 != number2) << std::endl;
 
-  std::cout << std::endl;
-  value -=5; // equivalent to value = value - 5
-  std::cout << "The value is (after -=5) : " << value << std::endl; // 45 
-
-  std::cout << std::endl;
-  value *=2;
-  std::cout << "The value is (after *=2) : " << value << std::endl; // 90
-
-  std::cout << std::endl;
-  value /= 3;
-  std::cout << "The value is (after /=3) : " << value << std::endl; // 30
-
-  std::cout << std::endl;
-  value %= 11;
-  std::cout << "The value is (after %=11) : " << value << std::endl;// 8
+	std::cout << std::endl;
+	std::cout << "store comparison result and use it later" << std::endl;
+	
+	bool result = (number1 == number2);
+    
+  std::cout <<  number1 << " == " << number2 << " : " << result <<  std::endl;
 
   return 0;
 }
