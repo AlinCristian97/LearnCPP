@@ -1,26 +1,69 @@
-// Precedence and Associativity
+// Prefix And Postfix Plus and Minus
 
 #include <iostream>
 
 int main() {
 
-  int a {6};
-  int b {3};
-  int c {8};
-  int d {9};
-  int e {3};
-  int f {2};
-  int g {5};
-      
-  int result = a + b * c -d/e -f + g; //  6 +  24  -   3 - 2 + 5
+	int value { 5 };
+    
+  //Increment by one
+  value = value + 1; //6
+  std::cout << "The value is : " << value << std::endl; // 6
   
-  std::cout << "result : " << result << std::endl;
+  value = 5; // Reset value to 5
+  
+  //Decrement by one
+  value = value - 1; // 4
+  std::cout << "The value is : " << value << std::endl; //4
+  
+  //===================================================================
 
-  result = a/b*c +d - e + f;  //   16 + 9 - 3 + 2
-  std::cout << "result : " << result << std::endl;
+  
+  std::cout << "======Postfix increment and decrement======"<< std::endl;
+  //Reset value to 5
+  value = 5;
+  
+  std::cout << "The value is (incrementing) : " << value++ << std::endl; // 5
+  std::cout << "The value is : " << value << std::endl; // 6
+  
+  std::cout << std::endl;
+  
+  //Decrement with postfix
+  
+  //Reset value to 5
+  value = 5;
+  
+  std::cout << "The value is (decrementing) : " << value-- << std::endl; //5
+  std::cout << "The value is : " << value << std::endl; // 4
 
-  result = (a + b) * c -d/e -f + g; // 72-3-2+5
-  std::cout << "result () : " << result << std::endl;
+
+  //===================================================================
+
+  
+  std::cout << "======Prefix increment and decrement======"<< std::endl;
+
+  //Reset value to 5
+  value = 5;
+  
+  ++value;
+  std::cout << "The value is (prefix++) : " << value << std::endl; // 6
+  
+  //Reset value to 5
+  value = 5;
+  std::cout << "The value is (prefix++ in place) : " << ++value << std::endl; // 6
+  
+  std::cout << std::endl;
+  
+  //Prefix : Decrementing
+  
+  //Reset value to 5;
+  value = 5;
+  --value;
+  std::cout << "The value is (prefix--) : " << value << std::endl; // 4
+  
+  //Reset value to 5;
+  value = 5;
+  std::cout << "The value is (prefix-- in place) : " << --value << std::endl;//4
 
   return 0;
 }
