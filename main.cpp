@@ -1,39 +1,26 @@
-// Basic Operations
+// Precedence and Associativity
 
 #include <iostream>
 
 int main() {
 
-  //Addition
-  int number1 {2};
-  int number2 {7};
-
-  int result = number1 + number2;
+  int a {6};
+  int b {3};
+  int c {8};
+  int d {9};
+  int e {3};
+  int f {2};
+  int g {5};
+      
+  int result = a + b * c -d/e -f + g; //  6 +  24  -   3 - 2 + 5
+  
   std::cout << "result : " << result << std::endl;
 
-  //Subtraction
-  result = number2 - number1 ;
+  result = a/b*c +d - e + f;  //   16 + 9 - 3 + 2
   std::cout << "result : " << result << std::endl;
 
-  result = number1 - number2;
-  std::cout << "result : " << result << std::endl;
-
-  //Multiplication
-  result = number1 * number2;
-  std::cout << "result : " << result << std::endl;
-
-
-  //Division
-  result = number2 / number1;
-  std::cout << "result : " << result << std::endl;
-
-
-  //Modulus
-  result = number2 % number1; // 7 % 2
-  std::cout << "result : " << result << std::endl; // 1
-
-  result = 31 % 10;
-  std::cout << "result : " << result << std::endl; // 1
+  result = (a + b) * c -d/e -f + g; // 72-3-2+5
+  std::cout << "result () : " << result << std::endl;
 
   return 0;
 }
