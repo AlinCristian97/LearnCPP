@@ -7,7 +7,7 @@ int main()
 {
 
 	//Declare array
-    char message [5]  {"Hello"};
+    char message [5]  {'H', 'e', 'l', 'l', 'o'};
     //int data[5] {1,2,3,3,3};
 
     //std::cout << "data : " << data << std::endl;
