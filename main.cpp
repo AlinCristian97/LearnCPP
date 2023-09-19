@@ -1,40 +1,65 @@
-// Else If
+// Switch
 
 #include <iostream>
 
 // Tools
-const int Pen{ 10 }; 
-const int Marker{ 20 };
-const int Eraser{ 30 };
-const int Rectangle{ 40 };
-const int Circle{ 50 };
-const int Ellipse{ 60 };
+const int Pen{10};
+const int Marker{20};
+const int Eraser{30};
+const int Rectangle{40};
+const int Circle{50};
+const int Ellipse{60};
 
-int main() {
+int main()
+{
 
-	int tool {Eraser};
+	int tool{Eraser};
 
-	if (tool == Pen) {
-		std::cout << "Active tool is pen" << std::endl;
-		//Do the actual painting
+	switch (tool)
+	{
+	case Pen:
+	{
+		std::cout << "Active tool is Pen" << std::endl;
 	}
-	else if (tool == Marker) {
+	break;
+
+	case Marker:
+	{
 		std::cout << "Active tool is Marker" << std::endl;
 	}
-	else if (tool == Eraser) {
-		std::cout << "Active tool is Eraser" << std::endl;
+	break;
+
+	case Eraser:
+	case Rectangle:
+	case Circle:
+	{
+		std::cout << "Drawing Shapes" << std::endl;
 	}
-	else if (tool == Rectangle) {
-		std::cout << "Active tool is Rectangle" << std::endl;
-	}
-	else if (tool == Circle) {
-		std::cout << "Active tool is Circle" << std::endl;
-	}
-	else if (tool == Ellipse) {
+	break;
+
+	case Ellipse:
+	{
 		std::cout << "Active tool is Ellipse" << std::endl;
+	}
+	break;
+
+	default:
+	{
+		std::cout << "No match found" << std::endl;
+	}
+	break;
 	}
 
 	std::cout << "Moving on" << std::endl;
+
+	/*
+	// Condition can only be integer of enum (We'll learn about enums later in the course)
+	std::string name {"John"};
+	switch (name) // Compiler error!
+	{
+
+	}
+	*/
 
 	return 0;
 }
