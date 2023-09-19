@@ -1,37 +1,85 @@
-// Ternary Operator
+// For Loop
 
 #include <iostream>
-
-// Tools
-const int Pen{10};
-const int Marker{20};
-const int Eraser{30};
-const int Rectangle{40};
-const int Circle{50};
-const int Ellipse{60};
 
 int main()
 {
 
-	int max{};
-    
-	int a{35};
-	int b{200};
-
-	std::cout << std::endl;
-	std::cout << "using regular if " << std::endl;
-	
+	// Print I love C++ 10 times : The bad way
 	/*
-	if(a >  b){
-		max = a;
-	}else{
-		max = b;
-	}
+	std::cout << "I love C++" << std::endl;
+	std::cout << "I love C++" << std::endl;
+	std::cout << "I love C++" << std::endl;
+	std::cout << "I love C++" << std::endl;
+	std::cout << "I love C++" << std::endl;
+	std::cout << "I love C++" << std::endl;
+	std::cout << "I love C++" << std::endl;
+	std::cout << "I love C++" << std::endl;
+	std::cout << "I love C++" << std::endl;
+	std::cout << "I love C++" << std::endl;
 	*/
 
-	max = (a > b)? a : b; // Ternary operator
+	// for loop : the good way
+	/*
+   for( unsigned int i{0} ; i < 10000 ;++i){
+	   //Whatever we want the loop to run
+	   std::cout << i <<  " : I love C++" << std::endl;
+   }
+   std::cout << "Loop done!" << std::endl;
+   */
 
-	std::cout << "max : " << max << std::endl;
+	// Use size_t : a representation of some unsigned int for positive numbers [sizes]
+	/*
+	for(size_t i{0} ; i < 10 ; ++i){
+		std::cout << i << " : I love C++" << std::endl;
+	}
+	std::cout << "Loop done!" << std::endl;
+	*/
+	/*
+	//sizeof(size_t)
+	std::cout << "sizeof(size_t) : " << sizeof(size_t) << std::endl;
+	*/
+
+	// Scope of the iterator
+	/*
+	for(size_t i{0} ; i < 10 ; ++i){
+		std::cout << i << " : I love C++" << std::endl;
+	}
+	std::cout << "Loop done!" << std::endl;
+	// std::cout << "i : " << i << std::endl;Compiler error : i is not in scope
+	*/
+
+	// Iterator declared outside the loop
+	/*
+	 size_t i{0}; // Iterator defined outside
+
+	 for(i ; i < 10 ; ++i){
+		 std::cout << i << " : I love C++" << std::endl;
+	 }
+	 std::cout << "Loop done!" << std::endl;
+	 std::cout << "i : " << i << std::endl;
+	 */
+
+	// Leave out the iterator declaration part
+	/*
+	size_t i{0}; // Iterator defined outside
+
+	for(  ; i < 10 ; ++i){
+		std::cout << i << " : I love C++" << std::endl;
+	}
+	std::cout << "Loop done!" << std::endl;
+	std::cout << "i : " << i << std::endl;
+	*/
+
+	// Don't hard code values : BAD!
+
+	const size_t COUNT{100};
+
+	for (size_t i{0}; i < COUNT; ++i)
+	{
+		std::cout << i << " : I love C++" << std::endl;
+	}
+	std::cout << "Loop done!" << std::endl;
 
 	return 0;
 }
