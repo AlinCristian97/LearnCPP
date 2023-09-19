@@ -1,4 +1,4 @@
-// While Loop
+// Do While Loop
 
 #include <iostream>
 
@@ -20,15 +20,14 @@ int main()
     std::cout << "I love C++" << std::endl;
     */
 
-
-    const size_t COUNT{100};
+    const int COUNT{0};
     size_t i{0}; // Iterator declaration
 
-    while(i < COUNT ){ // Test
-       std::cout << i << " : I love C++" << std::endl;
+    do{
+        std::cout << i << " : I love C++" << std::endl;
+        ++i; // Incrementation
+    }while( i < COUNT);
 
-       ++i; // Incrementation 
-    }
     std::cout << "Loop done!" << std::endl;
 
 	return 0;
