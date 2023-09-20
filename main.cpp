@@ -1,4 +1,4 @@
-// Memory Leaks
+// Dynamic Arrays
 
 #include <iostream>
 
@@ -6,42 +6,59 @@
 int main()
 {
 
-	/*
-    int *p_number {new int{67}}; // Points to some address, let's call that address1
+    const size_t size{10};
     
-    //Should delete and reset here 
-    
-    int number{55}; // stack variable
-    
-    p_number = &number; // Now p_number points to address2 , but address1 is still in use by 
-                        // our program. But our program has lost access to that memory location.
-						//Memory has been leaked.
-    */
-
-	//Double allocation 
-    /*
-    int *p_number1 {new int{55}};
-    
-	//Use the pointer
-    
-	//Should delete and reset here.
+    //Different ways you can declare an array
+	//dynamically and how they are initialized
 	
-    p_number1 = new int{44}; // memory with int{55} leaked.
+    double *p_salaries { new double[size]}; // salaries array will
+															//contain garbage  values
+    int *p_students { new(std::nothrow) int[size]{} }; // All values initialized to 0 
+    
+    double *p_scores { new(std::nothrow) double[size]{1,2,3,4,5}}; // Allocating memory space
+																	// for an array  of size double
+																	//vars. First 5 will be initialized
+																	//with 1,2,3,4,5, and the 
+																	//rest will be 0's.
 
-    delete p_number1;
-    p_number1 = nullptr;
-    */
 
-	//Nested scopes with dynamically allocated memory
-	{
-		int *p_number2 {new int{57}};
+    //nullptr check and use the allocated array
+    if(p_scores){
+        std::cout << "size of scores (it's a regular pointer) : " << sizeof(p_scores) << std::endl;
+        std::cout << "Successfully allocated memory for scores."<< std::endl;
+        
+        //Print out elements. Can use regular array access notation, or pointer arithmetic
+        for( size_t i{}; i < size ; ++i){
+           std::cout << "value : " << p_scores[i] << " : " << *(p_scores + i) << std::endl; 
+        }
+    }
 
-        //Use the dynamic memory
+    delete [] p_salaries;
+    p_salaries = nullptr;
 
-	}
-	//Memory with int{57} leaked.
+    delete [] p_students;
+    p_students = nullptr;
 
-    std::cout << "Program ending well" << std::endl;
+   delete [] p_scores;
+   p_scores = nullptr;
+
+   //Static arrays Vs dynamic arrays
+   std::cout << "=====================================" << std::endl;
+
+   int scores[10] {1,2,3,4,5,6,7,8,9,10}; // Lives on the stack
+
+   std::cout << "scores size : " << std::size(scores) << std::endl;
+   for( auto s : scores){
+       std::cout << "value : " << s << std::endl;
+   }
+
+   int* p_scores1 = new int[10] {1,2,3,4,5,6,7,8,9,10}; // Lives on the heap.
+   //std::cout << "p_scores1 size : " << std::size(p_scores) << std::endl;
+   /*
+   for( auto s : p_scores1){
+       std::cout << "value : " << s << std::endl;
+   }
+   */
 
 	return 0;
 }
