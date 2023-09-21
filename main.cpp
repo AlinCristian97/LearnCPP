@@ -1,36 +1,49 @@
-// Returning from functions
+// Overloading with different parameters
 
 #include <iostream>
 
-int sum ( int a , int b){
-    int result = a + b;
-    std::cout << "In : &result(int) :  " << &result << std::endl;
- 	return result;
+int max(int a, int b){
+    std::cout << "int overload called" << std::endl;
+    return (a>b)? a : b; 
 }
 
-std::string add_strings(std::string str1, std::string str2){
-    std::string result =  str1 + str2;
-    std::cout << "In : &result(std::string) :  " << &result << std::endl;
-    return result;
+double max(double a, double b){
+    std::cout << "double overload called" << std::endl;
+    return (a>b)? a : b; 
+}
+
+double max(int a, double b){
+    std::cout << "(int,double) overload called" << std::endl;
+    return (a>b)? a : b; 
+}
+
+double max(double a, int b){
+    std::cout << "(double,int) overload called" << std::endl;
+    return (a>b)? a : b; 
+}
+
+double max(double a, int b,int c){
+    std::cout << "(double,int,int) overload called" << std::endl;
+    return a;
+}
+
+std::string_view  max(std::string_view a, std::string_view b){
+    std::cout << "(string_view,string_view) overload called" << std::endl;
+     return (a>b)? a : b;
 }
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-    /*
-    int x{15};
+    int x{4};
     int y{9};
-    int result = sum(x,y);
-    std::cout << "Out : &result(int) :  " << &result << std::endl;
-    std::cout << "result : " << result << std::endl;
-    */
-   
-    std::string in_str1{"Hello"};
-    std::string in_str2{" World!"};
-    std::string result_str = add_strings(in_str1,in_str2);
-    std::cout << "Out : &result_str(std::string) :  " << &result_str << std::endl;
-    std::cout << "result_str : " << result_str << std::endl;
+    double a{5.4};
+    double b{7.4};
+
+    auto result = max(b,x,y);
+
+    max("Hello","World");
    
     return 0;
 
