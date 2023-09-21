@@ -1,47 +1,26 @@
-// Function Declaration and Definition
+// Functions across Multiple Files
 
 #include <iostream>
-
-int max(int a, int b); // Function declaration , prototype
-                        // Signature doesn't include return type
-int min(int a, int b);
-
-int inc_mult( int a, int b);
+#include "compare.h"
+#include "operations.h"
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-    int x {5};
-    int y{12};
+    int maximum = max(34, 56);
+    std::cout << "max: " << max << std::endl;
 
-    int result = min(x,y);
-    std::cout << "min : " << result << std::endl;
+    int minimum = min(143, 23);
+    std::cout << "min: " << min << std:endl;
 
-    result =inc_mult(x,y);
-    std::cout << "result : " << result << std::endl;
+    int x {4};
+    int y {5};
+
+    int result = incr_mult(x, y);
+
+    std::cout << "result: " << result << std::endl;
 
     return 0;
 
-}
-
-//Function definition. Shows up after main 
-int max(int a, int b){
-    if(a > b)
-        return a;
-    else
-        return b;
-}
-
-
-//Function definition. Shows up after main 
-int min(int a, int b){
-    if(a < b)
-        return a;
-    else
-        return b;
-}
-
-int inc_mult( int a, int b){
-    return ( (++a)*(++b));
 }
