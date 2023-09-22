@@ -1,36 +1,26 @@
-// Building your own Concepts
+// Zooming in Requires Clause
 
 #include <iostream>
-#include <type_traits>
 #include <concepts>
 
-//Syntax1
-/*
 template <typename T>
-concept MyIntegral = std::is_integral_v<T>;
-
-MyIntegral auto add( MyIntegral auto a, MyIntegral auto b) {
-    return a + b;
-}
-*/
-
-
-template <typename T>
-concept Multipliable =  requires(T a, T b) {
-	a * b; // Just makes sure the syntax is valid
+concept TinyType = requires (T t){
+    sizeof(T) <= 4; // Simple requirement : Only enforces syntax
+    requires sizeof(T) <= 4; // Nested requirements
 };
 
 
+//Compound requirement
 template <typename T>
-concept Incrementable = requires (T a) {
-	a+=1;
-	++a;
-	a++;
+concept Addable = requires (T a, T b) {
+	//noexcept is optional
+	{a + b} -> std::convertible_to<int>; //Compound requirement
+	//Checks if a + b is valid syntax, doesn't throw expetions(optional) , and the result
+	//is convertible to int(optional)
 };
 
-template <typename T>
-requires Incrementable<T>
-T add (T a, T b){
+
+Addable auto add( Addable auto a, Addable auto b){
     return a + b;
 }
 
@@ -38,15 +28,17 @@ T add (T a, T b){
 int main()
 {
 
-	double x{6};
-	double y{7};
+	double x{67};
+	double y{56};
 
 	//std::string x{"Hello"};
 	//std::string y{"World"};
 
-	add(x,y);
+	//auto s = x + y;
 
-	std::cout << "Done!" << std::endl;
+	auto result  = add(x,y);
+	std::cout << "result : " << result << std::endl;
+	std::cout << "sizeof(result) : " << sizeof(result) << std::endl;
 
 	return 0;
 
