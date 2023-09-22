@@ -1,42 +1,40 @@
-// First C++ Class
+// Constructors
 
 #include <iostream>
 
 const double PI {3.1415926535897932384626433832795};
 
-// Blueprint
 class Cylinder {
+    public : 
+        // Constructors
+        Cylinder(){
+            base_radius = 2.0;
+            height = 2.0;
+        }
 
-	public:
-		// Functions (methods)
-		double volume() {
-			return PI * baseRadius * baseRadius * height;
-		}
+        Cylinder(double rad_param,double height_param){
+            base_radius = rad_param;
+            height = height_param;
+        }
+   
+        // Functions (methods)
+        double volume(){
+            return PI * base_radius * base_radius * height;
+        }
 
-	public:
-		// Member variables
-		double baseRadius {1};
-		double height {1};
-
+    private : 
+        // Member variables
+        double base_radius{1};
+        double height{1};
 };
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-	Cylinder cylinder1; // Objects
-	
-	std::cout << "volume: " << cylinder1.volume() << std::endl;
-
-	// Change the member varialbes
-	cylinder1.baseRadius = 10;
-	cylinder1.height = 3;
-
-	std::cout << "volume: " << cylinder1.volume() << std::endl;
-
-	cylinder1.height = 8;
-
-	std::cout << "volume: " << cylinder1.volume() << std::endl;
+	//Cylinder cylinder1(10,4); // Object
+	Cylinder cylinder1;
+	std::cout << "volume : " << cylinder1.volume() << std::endl;
 
 	return 0;
 
