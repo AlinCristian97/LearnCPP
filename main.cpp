@@ -1,36 +1,47 @@
-// Template type parameters by reference
+// Template specialization
 
 #include <iostream>
+#include <cstring>
 
-template <typename T> const T& maximum(const T& a, const T& b); // Declaration
-//template <typename T> T maximum(T a, T b); // Declaration
+template <typename T> T maximum(T a,T b){
+    return (a > b) ? a : b ; 
+}
+
+template <>
+const char* maximum<const char*> (const char* a, const char* b){
+    return ( std::strcmp(a,b) > 0) ? a : b;
+}
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-    double a {23.5};
-    double b {51.2};
+    /*
+	int a{10};
+	int b{23};
+	double c{34.7};
+	double d{23.4};
+	std::string e{"hello"};
+	std::string f{"world"};
+	
+	auto max_int = maximum(a,b); // int type deduced
+	auto max_double = maximum(c,d);// double type deduced
+	auto max_str = maximum(e,f) ;// string type deduced
+	
+	std::cout << "max_int : " << max_int << std::endl;
+	std::cout << "max_double : " << max_double << std::endl;
+	std::cout << "max_str : " << max_str << std::endl;
+    */
 
-    std::cout << "Out - &a: " << &a << std::endl; // 0x111abc
+    //
+	const char* g{"wild"};
+	const char* h{"animal"};
+	
+	//This won't do what you would expect : BEWARE!
 
-    auto result = maximum(a,b);
-    
-    std::cout << "Out - &a: " << &a << std::endl; // 0x111abc
+    const char* result = maximum(g,h);
+	std::cout << "max(const char*) : " << result << std::endl;
 
 	return 0;
 
 }
-
-//Definition
-template <typename T> const T& maximum(const T& a, const T& b){
-    std::cout << "In - &a: " << &a << std::endl; // // 0x111abc
-    return (a > b ) ? a : b ;
-}
-
-/*
-template <typename T> T maximum(T a, T b){
-    std::cout << "In - &a: " << &a << std::endl; // // 0x111abc
-    return (a > b ) ? a : b ;
-}
-*/
