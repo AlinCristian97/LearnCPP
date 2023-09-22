@@ -1,46 +1,58 @@
-// Template specialization
+// Concepts
 
 #include <iostream>
-#include <cstring>
+#include <concepts>
 
-template <typename T> T maximum(T a,T b){
-    return (a > b) ? a : b ; 
+//Syntax1
+/*
+template <typename T>
+requires std::integral<T>
+T add( T a, T b){
+    return a + b;
 }
+*/
 
-template <>
-const char* maximum<const char*> (const char* a, const char* b){
-    return ( std::strcmp(a,b) > 0) ? a : b;
+//Syntax2
+/*
+template <std::integral T>
+T add( T a, T b){
+    return a + b;
+}
+*/
+
+//Syntax3
+/*
+auto add(std::integral auto a , std::integral auto b){
+    return a + b;
+}
+*/
+
+//Syntax4
+template <typename T>
+T add( T a, T b) requires std::integral<T>{
+    return a + b;
 }
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-    /*
-	int a{10};
-	int b{23};
-	double c{34.7};
-	double d{23.4};
-	std::string e{"hello"};
-	std::string f{"world"};
+	char a_0{10};
+	char a_1{20};
 	
-	auto max_int = maximum(a,b); // int type deduced
-	auto max_double = maximum(c,d);// double type deduced
-	auto max_str = maximum(e,f) ;// string type deduced
+	auto result_a = add(a_0,a_1);
+	std::cout << "result_a : " << static_cast<int>(result_a) << std::endl;
 	
-	std::cout << "max_int : " << max_int << std::endl;
-	std::cout << "max_double : " << max_double << std::endl;
-	std::cout << "max_str : " << max_str << std::endl;
-    */
+	int b_0{11};
+	int b_1{5};
+	auto result_b = add(b_0,b_1);
+	std::cout << "result_b : " << result_b << std::endl;
 
-    //
-	const char* g{"wild"};
-	const char* h{"animal"};
-	
-	//This won't do what you would expect : BEWARE!
 
-    const char* result = maximum(g,h);
-	std::cout << "max(const char*) : " << result << std::endl;
+	double c_0 {11.1};
+	double c_1 {1.9};
+	auto result_c = add(c_0,c_1);
+    std::cout << "result_c : " << result_c << std::endl;
 
 	return 0;
 
