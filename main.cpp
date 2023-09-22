@@ -1,26 +1,24 @@
-// Zooming in Requires Clause
+// Logical combinations of Concepts
 
 #include <iostream>
 #include <concepts>
 
+
 template <typename T>
-concept TinyType = requires (T t){
-    sizeof(T) <= 4; // Simple requirement : Only enforces syntax
-    requires sizeof(T) <= 4; // Nested requirements
+concept TinyType = requires ( T t){
+	sizeof(T) <=4; // Simple requirement
+	requires sizeof(T) <= 4; // Nested requirement
 };
 
 
-//Compound requirement
 template <typename T>
-concept Addable = requires (T a, T b) {
-	//noexcept is optional
-	{a + b} -> std::convertible_to<int>; //Compound requirement
-	//Checks if a + b is valid syntax, doesn't throw expetions(optional) , and the result
-	//is convertible to int(optional)
-};
-
-
-Addable auto add( Addable auto a, Addable auto b){
+//requires std::integral<T> || std::floating_point<T> // OR operator
+//requires std::integral<T> && TinyType<T>
+requires std::integral<T> && requires ( T t){
+	sizeof(T) <=4; // Simple requirement
+	requires sizeof(T) <= 4; // Nested requirement
+}
+T add(T a, T b){
     return a + b;
 }
 
@@ -28,17 +26,10 @@ Addable auto add( Addable auto a, Addable auto b){
 int main()
 {
 
-	double x{67};
-	double y{56};
+	long long int x{7};
+	long long int y{5};
 
-	//std::string x{"Hello"};
-	//std::string y{"World"};
-
-	//auto s = x + y;
-
-	auto result  = add(x,y);
-	std::cout << "result : " << result << std::endl;
-	std::cout << "sizeof(result) : " << sizeof(result) << std::endl;
+	add(x,y);
 
 	return 0;
 
