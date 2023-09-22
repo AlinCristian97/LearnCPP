@@ -1,41 +1,24 @@
-// Capture all in context
+// Trying out Function Templates
 
 #include <iostream>
+
+template <typename T>
+T maximum(T a , T b){
+    return (a > b)? a : b; 
+}
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-	//Capture everything by value
-	/*
-	int c{42};
-	
-	auto func = [=](){
-			std::cout << "Inner value : " << c << std::endl;
-	};
-	
-	for(size_t i{} ; i < 5 ;++i){
-			std::cout << "Outer value : " << c << std::endl;
-			func();
-			++c;
-	}
-	*/
+    int x{5};
+    int y{7};
 
+    int* p_x {&x};
+    int* p_y{&y};
 
-	//Capturing all reference
-	int c{42};
-	int d{5};
-	
-	auto func = [&](){
-			std::cout << "Inner value : " << c << std::endl;
-			std::cout << "Inner value(d) : " << d << std::endl;
-	};
-	
-	for(size_t i{} ; i < 5 ;++i){
-			std::cout << "Outer value : " << c << std::endl;
-			func();
-			++c;
-	}
+    auto result = maximum(p_x,p_y);
+    std::cout << "result : " << *result << std::endl;
 
 	return 0;
 
