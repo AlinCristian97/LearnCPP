@@ -1,28 +1,36 @@
-// Template type deduction and explicit arguments
+// Template type parameters by reference
 
 #include <iostream>
-#include <string>
 
-template <typename T> T maximum( T a, T b){
-    return (a > b) ? a : b;
-}
+template <typename T> const T& maximum(const T& a, const T& b); // Declaration
+//template <typename T> T maximum(T a, T b); // Declaration
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-    int a{10};
-	int b{23};
-	double c{34.7};
-	double d{23.4};
-	std::string e{"hello"};
-	std::string f{"world"};
+    double a {23.5};
+    double b {51.2};
 
-    //Explicit template arguments
+    std::cout << "Out - &a: " << &a << std::endl; // 0x111abc
 
-    auto max = maximum<double>(a,f);
-    std::cout << "max : " << max << std::endl;
+    auto result = maximum(a,b);
+    
+    std::cout << "Out - &a: " << &a << std::endl; // 0x111abc
 
 	return 0;
 
 }
+
+//Definition
+template <typename T> const T& maximum(const T& a, const T& b){
+    std::cout << "In - &a: " << &a << std::endl; // // 0x111abc
+    return (a > b ) ? a : b ;
+}
+
+/*
+template <typename T> T maximum(T a, T b){
+    std::cout << "In - &a: " << &a << std::endl; // // 0x111abc
+    return (a > b ) ? a : b ;
+}
+*/
