@@ -1,35 +1,16 @@
-// Size of Class objects
+// First Try On Inheritance
 
 #include <iostream>
-
-class Dog{
-    public:
-        Dog() = default;
-        void prin_info() {
-
-        }
-        void do_something() {
-
-        }
-
-    private:
-        size_t leg_count; //8
-        size_t arm_count; //8
-        int* p_age; // 8
-};
+#include "player.h"
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-    Dog dog1;
-    std::cout << "sizeof(size_t) : " << sizeof(size_t) << std::endl;
-    std::cout << "sizeof(int*) : " << sizeof(int*) << std::endl;
-    std::cout << "sizeof(Dog) : " << sizeof(dog1) << std::endl;
-
-    std::string name{"I am the king of the universe!"};
-
-    std::cout << "sizeof(name) : " << sizeof(name) << std::endl;
+    Player p1("Basketball");
+    p1.set_first_name("John");
+    p1.set_last_name("Snow");
+    std::cout << "player : " << p1 << std::endl;
 
 	return 0;
 
