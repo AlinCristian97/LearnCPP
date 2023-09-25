@@ -1,15 +1,15 @@
-// Destructors
+// Constructor and Destructor call order
 
 #include <iostream>
 #include <string_view>
 
 class Dog{
-    public:
+    public: 
         Dog() = default;
         Dog(std::string_view name_param, std::string_view breed_param, int  age_param);
         ~Dog();
 
-    private:
+    private: 
         std::string name;
         std::string breed;
         int* p_age{nullptr};
@@ -27,19 +27,14 @@ Dog::~Dog(){
     std::cout << "Dog destructor called for : " << name << std::endl;
 }
 
-void some_func(){
-    Dog* p_dog = new Dog("Fluffy","Shepherd",2);
-
-    delete p_dog;// Causes for the destructor of Dog to be called
-}
-
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-    some_func();
-    
-    std::cout << "Done!" << std::endl;
+    Dog dog1("Dogyy1","Shepherd",2);
+    Dog dog2("Dogyy2","Shepherd",3);
+    Dog dog3("Dogyy3","Shepherd",5);
+    Dog dog4("Dogyy4","Shepherd",1);
 
 	return 0;
 
