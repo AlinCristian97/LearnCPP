@@ -1,97 +1,49 @@
-// This pointer
+// Struct
 
 #include <iostream>
-#include <string_view>
 
-class Dog{
+class Dog {
     public : 
-        Dog() = default;
-        Dog(std::string_view name_param, std::string_view breed_param, int  age_param);
-        ~Dog();
-
-        void print_info(){
-            std::cout << "Dog (" << this << ") : [ name : " << name 
-                << " breed : " << breed << " age : " << *p_age << "]" << std::endl;
-        }
-
-        //Setters
-        //Chained calls using pointers
-        /*
-        Dog* set_dog_name(std::string_view name){
-            //name = name; // This does nothing
-            this->name = name;
-            return this;
-        }
-        Dog* set_dog_breed(std::string_view breed){
-            this->breed = breed;
-            return this;
-        }
-
-        Dog* set_dog_age(int age){
-            *(this->p_age) = age;
-            return this;
-        }
-        */
-
-       //Chained calls using references
-        Dog& set_dog_name(std::string_view name){
-            //name = name; // This does nothing
-            this->name = name;
-            return *this;
-        }
-        Dog& set_dog_breed(std::string_view breed){
-            this->breed = breed;
-            return *this;
-        }
-
-        Dog& set_dog_age(int age){
-            *(this->p_age) = age;
-            return *this;
-        }
-
-    private : 
-        std::string name;
-        std::string breed;
-        int * p_age{nullptr};
+        std::string m_name;
 };
-Dog::Dog(std::string_view name_param, std::string_view breed_param, int  age_param){
-    name = name_param;
-    breed = breed_param;
-    p_age = new int;
-    *p_age = age_param;
-    std::cout << "Dog constructor called for " << name << " at " << this << std::endl;
-}
 
-Dog::~Dog(){
-    delete p_age;
-    std::cout << "Dog destructor called for " << name << " at " << this <<  std::endl;
+struct Cat {
+    public : 
+        std::string m_name;
+};
+
+
+struct Point {
+    double x;
+    double y;
+};
+
+void print_point(const Point& point){
+    std::cout << "Point [ x: " << point.x << ", y : " << point.y << "]" << std::endl;
 }
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-    Dog dog1("Fluffy","Shepherd",2); //Constructor
-    dog1.print_info();
+    Dog dog1;
+    Cat cat1;
 
-    /*
-    dog1.set_dog_name("Pumba");
-    dog1.set_dog_breed("Wire Fox Terrier");
-    dog1.set_dog_age(4);
-    */
-
-    //Chained calls using pointers
-    //dog1.set_dog_name("Pumba")->set_dog_breed("Wire Fox Terrier")->set_dog_age(4);
-
-    //Chained calls using references
-    dog1.set_dog_name("Pumba").set_dog_breed("Wire Fox Terrier").set_dog_age(4);
+    dog1.m_name = "Fluffy"; // Compiler error
+    cat1.m_name = "Juny";
+    std::cout << dog1.m_name << std::endl;
+    std::cout << cat1.m_name << std::endl;
 
 
-    dog1.print_info();
-   
+    Point point1;
+    point1.x = 10;
+    point1.y = 55.5;
 
-    std::cout << "Done!" << std::endl;
-   //Destructor
+    print_point(point1);
+
+    point1.x = 40.4;
+    point1.y = 2.7;
+    print_point(point1);
 
 	return 0;
 
