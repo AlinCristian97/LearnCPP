@@ -1,30 +1,45 @@
-// Managing Class Objects Through Pointers
+// Destructors
 
 #include <iostream>
-#include "cylinder.h"
+#include <string_view>
+
+class Dog{
+    public:
+        Dog() = default;
+        Dog(std::string_view name_param, std::string_view breed_param, int  age_param);
+        ~Dog();
+
+    private:
+        std::string name;
+        std::string breed;
+        int* p_age{nullptr};
+};
+Dog::Dog(std::string_view name_param, std::string_view breed_param, int  age_param){
+    name = name_param;
+    breed = breed_param;
+    p_age = new int;
+    *p_age = age_param;
+    std::cout << "Dog constructor called for " << name << std::endl;
+}
+
+Dog::~Dog(){
+    delete p_age;
+    std::cout << "Dog destructor called for : " << name << std::endl;
+}
+
+void some_func(){
+    Dog* p_dog = new Dog("Fluffy","Shepherd",2);
+
+    delete p_dog;// Causes for the destructor of Dog to be called
+}
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-    Cylinder cylinder1(10,10);
-
-    cylinder1.volume();
-
-    // Managing a stack object through pointers
-    Cylinder* p_cylinder1 = $cylinder1;
-
-    // std::cout << "volume: " << (*p_cylinder1).volume() << std::endl;
-    std::cout << "volume(cylinder1): " << p_cylinder1->volume() << std::endl;
-
-    // Create a cylinder heap object through the new operator
-    Cylinder* p_cylinder2 = new Cylinder(100, 2); // Heap
-
-    std::cout << "volume(cylinder2): " << p_cylinder2->volume() << std::endl;
-    std::cout << "base_radius(cylinder2): " << p_cylinder2->get_base_radius() << std::endl;
-
-
-    delete p_cylinder2;
+    some_func();
+    
+    std::cout << "Done!" << std::endl;
 
 	return 0;
 
