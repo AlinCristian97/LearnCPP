@@ -1,49 +1,35 @@
-// Struct
+// Size of Class objects
 
 #include <iostream>
 
-class Dog {
-    public : 
-        std::string m_name;
+class Dog{
+    public:
+        Dog() = default;
+        void prin_info() {
+
+        }
+        void do_something() {
+
+        }
+
+    private:
+        size_t leg_count; //8
+        size_t arm_count; //8
+        int* p_age; // 8
 };
-
-struct Cat {
-    public : 
-        std::string m_name;
-};
-
-
-struct Point {
-    double x;
-    double y;
-};
-
-void print_point(const Point& point){
-    std::cout << "Point [ x: " << point.x << ", y : " << point.y << "]" << std::endl;
-}
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
     Dog dog1;
-    Cat cat1;
+    std::cout << "sizeof(size_t) : " << sizeof(size_t) << std::endl;
+    std::cout << "sizeof(int*) : " << sizeof(int*) << std::endl;
+    std::cout << "sizeof(Dog) : " << sizeof(dog1) << std::endl;
 
-    dog1.m_name = "Fluffy"; // Compiler error
-    cat1.m_name = "Juny";
-    std::cout << dog1.m_name << std::endl;
-    std::cout << cat1.m_name << std::endl;
+    std::string name{"I am the king of the universe!"};
 
-
-    Point point1;
-    point1.x = 10;
-    point1.y = 55.5;
-
-    print_point(point1);
-
-    point1.x = 40.4;
-    point1.y = 2.7;
-    print_point(point1);
+    std::cout << "sizeof(name) : " << sizeof(name) << std::endl;
 
 	return 0;
 
