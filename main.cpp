@@ -1,15 +1,20 @@
-// Inheritance with destructors
+// Reused Symbols In Inheritance
 
 #include <iostream>
-#include "person.h"
-#include "engineer.h"
-#include "civilengineer.h"
+#include "child.h"
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-	CivilEngineer eng1("Daniel Gray",41,"Green Sky Oh Blue 33St#75",12,"Road Strength");
+	Child child(33);
+    child.print_var();// Calls the method in Child
+    child.Parent::print_var(); // Calls the method in Parent, 
+                               // value in parent just contains junk or whatever
+                               // in class initialization we did.
+							   
+    std::cout << "--------" << std::endl;
+    child.show_values();
 
 	return 0;
 
