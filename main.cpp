@@ -1,4 +1,4 @@
-// Resurrecting members back in scope
+// Default Arg Constructors With Inheritance
 
 #include <iostream>
 #include "person.h"
@@ -9,7 +9,7 @@
 int main()
 {
 
-
+    CivilEngineer ce1;
 
 	return 0;
 
