@@ -35,5 +35,6 @@ std::ostream& operator<<(std::ostream& out , const Person& person){
 
 Person::~Person()
 {
+    std::cout << "Destructor for Person called .." << std::endl;
 }
 
