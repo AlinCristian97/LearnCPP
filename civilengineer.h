@@ -13,7 +13,13 @@ public:
         //get_full_name(); // Compiler error
         ///m_full_name = "Daniel Gray"; //Compiler error
         //m_age = 45; // Compiler error
+
+        add(10,2);
+        add(10,2,4);
     }
+
+    public : 
+        //using Person::do_something; // Compiler error
 	
 private : 
     std::string m_speciality{"None"};

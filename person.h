@@ -24,6 +24,17 @@ public:
     std::string get_address()const{
         return m_address;
     }
+
+
+    int add(int a, int b) const{
+        return a + b ;
+    }
+
+    int add(int a, int b, int  c) const{
+        return a + b + c;
+    }
+
+    void do_something() const;
 public:
     std::string m_full_name{"None"};
 protected: 

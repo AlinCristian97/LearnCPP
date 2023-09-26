@@ -1,4 +1,4 @@
-// Closing in on Private Inheritance
+// Resurrecting members back in scope
 
 #include <iostream>
 #include "person.h"
@@ -9,11 +9,7 @@
 int main()
 {
 
-    Engineer eng1;
 
-    CivilEngineer ce1;
-
-    std::cout << "Done" << std::endl;
 
 	return 0;
 
