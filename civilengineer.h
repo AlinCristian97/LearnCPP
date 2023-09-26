@@ -9,6 +9,7 @@ public:
     CivilEngineer();
     CivilEngineer(std::string_view fullname,int age,
     std::string_view address,int contract_count, std::string_view speciality);
+    CivilEngineer(const CivilEngineer& source);
     ~CivilEngineer() ;
     
     void build_road(){
