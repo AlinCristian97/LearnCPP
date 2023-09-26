@@ -7,6 +7,8 @@ class CivilEngineer : public Engineer
     friend std::ostream& operator<<(std::ostream&, const CivilEngineer& operand);
 public:
     CivilEngineer();
+    CivilEngineer(std::string_view fullname,int age,
+    std::string_view address,int contract_count, std::string_view speciality);
     ~CivilEngineer() ;
     
     void build_road(){
