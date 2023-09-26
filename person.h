@@ -2,35 +2,34 @@
 #define PERSON_H
 
 #include <string>
-#include <iostream>
-
+#include <string_view>
 class Person
 {
-    friend std::ostream& operator<<(std::ostream& out, const Person& person);
+    friend std::ostream& operator<<(std::ostream& , const Person& person);
 public:
-    Person();
-    Person(std::string& first_name_param, std::string& last_name_param);
+    Person() = default;
+    Person(std::string_view fullname,int age,
+    const std::string address);
     ~Person();
     
     //Getters
-    std::string get_first_name() const{
-        return first_name;
+    std::string get_full_name()const{
+        return m_full_name;
     }
     
-    std::string get_last_name() const{
-        return last_name;
+    int get_age()const{
+        return m_age;
     }
-	
-    //Setters
-    void set_first_name(std::string_view fn){
-        first_name = fn;
+    
+    std::string get_address()const{
+        return m_address;
     }
-    void set_last_name(std::string_view ln){
-        last_name = ln;
-    }
-protected : 
-    std::string first_name{"Mysterious"};
-    std::string last_name{"Person"};
+public:
+    std::string m_full_name{"None"};
+protected: 
+    int m_age{0};
+private : 
+    std::string m_address{"None"};
 };
 
 
