@@ -1,36 +1,19 @@
-// Base Class Access Specifiers - A Demo
+// Closing in on Private Inheritance
 
 #include <iostream>
 #include "person.h"
-#include "player.h"
-#include "nurse.h"
 #include "engineer.h"
+#include "civilengineer.h"
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main()
 {
 
-    Person person1("Daniel Gray",27,"Blue Sky St 233 #56");
-    std::cout << "person1 : " << person1 << std::endl;
+    Engineer eng1;
 
-    std::cout << "---------------" << std::endl;
+    CivilEngineer ce1;
 
-    Player player;
-    player.m_full_name = "Samuel Jackson";
-    //player.m_age = 55; Compier error
-    //player.m_address = "2i892317322"; Compiler
-
-    std::cout << "------------------" << std::endl;
-
-    Nurse nurse1;
-    //nurse1.m_full_name = "Davy Johnes";Compiler error
-    //nurse1.m_age = 51; // Compiler error
-
-    std::cout << "---------------" << std::endl;
-    Engineer engineer1;
-    //engineer1.m_full_name = "Olivier Godson"; // Compiler error
-    //engineer1.m_age = 55; // Compiler error
-    //engineer1.m_address = "dsakfd;aslfjd;laskf"; // Compiler error
+    std::cout << "Done" << std::endl;
 
 	return 0;
 
