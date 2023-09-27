@@ -1,18 +1,17 @@
-// Static Binding With Inheritance
+// Polymorphism with Virtual Functions
 
 #include <iostream>
 #include "shape.h"
 #include "oval.h"
 #include "circle.h"
 
-void draw_circle(const Circle& circle){
-    circle.draw();
+void draw_shape(Shape * s){
+    s->draw();
 }
 
-void draw_oval(const Oval& oval){
-    oval.draw();
+void draw_shape_v1(const Shape& s_r){
+    s_r.draw();
 }
-// More functions as you deal with more shape types. 30 ? 70? 100? It's messy.
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main(){
@@ -26,33 +25,41 @@ int main(){
     Circle circle1(3.3,"Circle1");
     //circle1.draw();
 
+
+
     //Base pointers
     Shape * shape_ptr = &shape1;
-    //shape_ptr->draw();
+    //shape_ptr->draw(); // Shape::draw
 
     shape_ptr = &oval1;
-    //shape_ptr->draw(); // Draw an oval
+    //shape_ptr->draw(); // Oval::draw()
 
     shape_ptr = &circle1;
-    //shape_ptr->draw();
+    //shape_ptr->draw(); // Circle::draw()
 
 
     //Base references
     Shape& shape_ref = circle1;
-    //shape_ref.draw();
+    //shape_ref.draw(); // Cicle::draw()
 
 
+ 
     //Drawing shapes
-    draw_circle(circle1);
-    draw_oval(oval1);
+    //draw_shape(&circle1);
+    //draw_shape_v1(circle1);
 
+
+    //Raw pointers
+    shape_ptr  = &oval1;
+    //shape_ptr->get_x_rad();
 
 
     //Shapes stored in collections
-     Circle circle_collection[]{circle1,Circle(10.0,"Circle2"),Circle(20.0,"Circle3")};
-     Oval oval_collection[]{oval1,Oval(22.3,51.1,"Oval2")};
-     //More arrays as you have more shape types, 100? Messy right?
-
+    Shape* shape_collection[]{&shape1,&oval1,&circle1};
+	 
+	 for(Shape* s_ptr : shape_collection){
+        s_ptr->draw();
+    }
     
    
     return 0;
