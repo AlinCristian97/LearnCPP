@@ -1,55 +1,36 @@
-// Inheritance And Polymorphism At Different Levels
+// Inheritance And Polymorphism With Static Members
 
 #include <iostream>
-#include "animal.h"
-#include "feline.h"
-#include "dog.h"
-#include "cat.h"
-#include "bird.h"
-#include "pigeon.h"
-#include "crow.h"
+#include "ellipse.h"
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main(){
 
-    //Animal polymorphism
-    Dog dog1("dark gray","dog1");
-    Cat cat1("black stripes","cat1");
-    Pigeon pigeon1("white","pigeon1");
-    Crow crow1("black","crow1");
+	//Shape
+    Shape shape1("shape1");
+    std::cout << "shape count : " << Shape::m_count << std::endl;//1
     
-    Animal* animals[]{&dog1,&cat1,&pigeon1,&crow1};
+    Shape shape2("shape2");
+    std::cout << "shape count : " << Shape::m_count << std::endl;//2
     
-    for(const auto& animal : animals){
-        animal->breathe();
-    }
-
-    std::cout << "------------" << std::endl;
-
-    //Feline polymorphism
-    Dog dog2("dark gray","dog2");
-    Cat cat2("black stripes","cat2");
-    Pigeon pigeon2("white","pigeon2");//Putting pigeon in felines will result in compiler error
-                                        // pigeon is and Animal,a but is not a feline.
-    Animal animal1("some animal");
+    Shape shape3;
+    std::cout << "shape count : " << Shape::m_count << std::endl; // 3
     
-    Feline* felines[] {&dog2,&cat2};
+    std::cout  << "***********************************************" << std::endl;
     
-    for(const auto& feline : felines){
-        feline->run();
-    }
+    //Ellipse
+    Ellipse ellipse1(10,12,"ellipse1");
+    std::cout << "shape count : " << Shape::m_count << std::endl;// 4
+    std::cout << "ellipse count : " << Ellipse::m_count << std::endl;//1
 
 
-    std::cout << "------------" << std::endl;
+    std::cout  << "***********************************************" << std::endl;
 
-    //Bird polymorphism
-    Pigeon pigeon3("white","pigeon1");
-    Crow crow3("black","crow1");
-    
-    Bird* birds[] {&pigeon3,&crow3};
-    
-    for(const auto& bird : birds){
-        bird->fly();
+    //Shape polymorphism
+
+    Shape* shapes[] {&shape1,&ellipse1};
+    for(auto &s : shapes){
+        std::cout << "count : " << s->get_count() << std::endl;
     }
 
     return 0;
