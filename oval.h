@@ -9,7 +9,7 @@ public:
                 std::string_view description);
     ~Oval();
     
-    virtual void draw() const{
+    virtual void draw() const override{
         std::cout << "Oval::draw() called. Drawing " << m_description <<
             " with m_x_radius : " << m_x_radius << " and m_y_radius : " << m_y_radius 
                     << std::endl;
