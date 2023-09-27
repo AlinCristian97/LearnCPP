@@ -1,38 +1,23 @@
-// Inheritance And Polymorphism With Static Members
+// Final
 
 #include <iostream>
-#include "ellipse.h"
+
+//Intersting fact #1
+/*
+class Plane final{
+    Plane()=default;
+};
+
+//This will trigger a compiler error
+class FigherJet : public Plane{
+    
+};
+*/
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main(){
 
-	//Shape
-    Shape shape1("shape1");
-    std::cout << "shape count : " << Shape::m_count << std::endl;//1
-    
-    Shape shape2("shape2");
-    std::cout << "shape count : " << Shape::m_count << std::endl;//2
-    
-    Shape shape3;
-    std::cout << "shape count : " << Shape::m_count << std::endl; // 3
-    
-    std::cout  << "***********************************************" << std::endl;
-    
-    //Ellipse
-    Ellipse ellipse1(10,12,"ellipse1");
-    std::cout << "shape count : " << Shape::m_count << std::endl;// 4
-    std::cout << "ellipse count : " << Ellipse::m_count << std::endl;//1
-
-
-    std::cout  << "***********************************************" << std::endl;
-
-    //Shape polymorphism
-
-    Shape* shapes[] {&shape1,&ellipse1};
-    for(auto &s : shapes){
-        std::cout << "count : " << s->get_count() << std::endl;
-    }
-
+    std::cout << "Hello" << std::endl;
     return 0;
 
 }
