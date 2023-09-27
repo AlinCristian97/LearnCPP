@@ -1,46 +1,14 @@
-// Virtual Functions With Default Arguments
+// Virtual Destructors
 
 #include <iostream>
-#include "derived.h"
+#include "dog.h"
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
 int main(){
 
-    //Base ptr : Uses polymorphism
-    Base * base_ptr1 = new Derived;
-    double result = base_ptr1->add();
-    std::cout <<"Result (base ptr) : " << result  << std::endl; //12
+    Animal * p_animal = new Dog;
 
-
-    std::cout << "---------------------"<< std::endl;
-	
-    //Base ref : Uses Polymorphism
-    Derived derived1;
-    Base& base_ref1 = derived1;
-    result = base_ref1.add();
-    std::cout << "Result (base ref) : " << result << std::endl; // 12
-    
-    std::cout << "---------------------"<< std::endl;
-
-
-    //Raw objects
-    Base base3;
-    result = base3.add();
-    std::cout << "raw result : " << result << std::endl;
-
-    std::cout << "---------------------"<< std::endl;
-
-    //Direct object : Uses static binding
-    Derived derived2;
-    result = derived2.add();
-    std::cout << "Result (Direct object) : " << result << std::endl; // 22
-	
-    std::cout << "---------------------"<< std::endl;
-
-	//Raw objects - slicing : uses static binding
-	Base base1 = derived2;
-	result = base1.add();
-    std::cout << "Result (Raw objects assignment) : " << result << std::endl; //11
+    delete p_animal;
 
     return 0;
 
