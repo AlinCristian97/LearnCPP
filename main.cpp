@@ -1,21 +1,60 @@
-// Reused Symbols In Inheritance
+// Static Binding With Inheritance
 
 #include <iostream>
-#include "child.h"
+#include "shape.h"
+#include "oval.h"
+#include "circle.h"
+
+void draw_circle(const Circle& circle){
+    circle.draw();
+}
+
+void draw_oval(const Oval& oval){
+    oval.draw();
+}
+// More functions as you deal with more shape types. 30 ? 70? 100? It's messy.
 
 //TODO: Return to (https://github.com/rutura/The-C-20-Masterclass-Source-Code/blob/main/) to see the extra sections, if they are not already discussed
-int main()
-{
+int main(){
 
-	Child child(33);
-    child.print_var();// Calls the method in Child
-    child.Parent::print_var(); // Calls the method in Parent, 
-                               // value in parent just contains junk or whatever
-                               // in class initialization we did.
-							   
-    std::cout << "--------" << std::endl;
-    child.show_values();
+    Shape shape1("Shape1");
+    //shape1.draw();
 
-	return 0;
+    Oval oval1(2.0,3.5,"Oval1");
+    //oval1.draw();
+
+    Circle circle1(3.3,"Circle1");
+    //circle1.draw();
+
+    //Base pointers
+    Shape * shape_ptr = &shape1;
+    //shape_ptr->draw();
+
+    shape_ptr = &oval1;
+    //shape_ptr->draw(); // Draw an oval
+
+    shape_ptr = &circle1;
+    //shape_ptr->draw();
+
+
+    //Base references
+    Shape& shape_ref = circle1;
+    //shape_ref.draw();
+
+
+    //Drawing shapes
+    draw_circle(circle1);
+    draw_oval(oval1);
+
+
+
+    //Shapes stored in collections
+     Circle circle_collection[]{circle1,Circle(10.0,"Circle2"),Circle(20.0,"Circle3")};
+     Oval oval_collection[]{oval1,Oval(22.3,51.1,"Oval2")};
+     //More arrays as you have more shape types, 100? Messy right?
+
+    
+   
+    return 0;
 
 }
