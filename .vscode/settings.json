@@ -46,5 +46,6 @@
     "iomanip": "cpp",
     "xlocmon": "cpp",
     "xloctime": "cpp"
-  }
+  },
+  "C_Cpp.default.compilerPath": "E:\\Devs\\cpp\\mingw64\\bin\\gcc.exe"
 }

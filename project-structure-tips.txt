@@ -1,0 +1,29 @@
+How to organize your project series:
+C++ Arragement Methods
+
+Making Libraries
+  the standard is:
+    > public headers go in include/projname/
+    > everything else (private code) goes in src/
+
+Applications
+  options:
+    > folders per class
+    > folders per section
+    > pure flat
+    > headers for everything:
+      - one main cpp file
+      - single object rebuild flaw (long compile times for a single change)
+
+Including Libraries
+  > use a manager:
+    - vcpkg
+    - conan
+  > do it manually:
+    - download, build, link (or download prebuilt and link)
+    - git submodules
+
+Build Systems
+  > cmake
+  > premake
+  > 
